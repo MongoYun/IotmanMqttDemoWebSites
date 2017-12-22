@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.5,maximum-scale=1, minimum-scale=1, user-scalable=no"> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../public/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/bootstrap-3.3.7/css/bootstrap.min.css">
     <script src="../public/jquery/1.12.0/jquery.min.js"></script>
     <script src="../public/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     
@@ -58,7 +58,7 @@
         };
         */
         var mqtt_server_addr="cnxel.cn"
-        var mqtt_server_port=8083
+        var mqtt_server_port=8084
         var mqtt_userid="test"
         var mqtt_username="test"
         var mqtt_userpasswd="test"
@@ -67,7 +67,7 @@
         var mqtt_keepAlive = 5;
        
         var mqtt_cleanSession = true;
-        var mqtt_useSSL = false;
+        var mqtt_useSSL = true;
         
         var options={};
         if (mqtt_username) {
@@ -82,7 +82,7 @@
         options.cleanSession = mqtt_cleanSession;
         options.useSSL= mqtt_useSSL;
         options.onSuccess=onConnect;
-        options.onFailure=function(){  
+        options.onFailure=function(){
                 console.log("connect error");  
         };
         
@@ -123,7 +123,7 @@
             var date = new Date();
             nowtimems=date.getTime();
             
-            document.getElementById('NowTime').innerHTML="<h1>刷新时间：<font color=\"red\">"+getNowFormatDate()+"</font>&nbsp;<font color=\"blue\">和上一次刷新的间隔："+(nowtimems-lasttimems)+"</font>MS</h1>";
+            document.getElementById('NowTime').innerHTML="<h1>刷新时间：<font color=\"red\">"+getNowFormatDate()+"</font>&nbsp;</br><font color=\"blue\">和上一次刷新的间隔："+(nowtimems-lasttimems)+"</font>MS</br>设备里设定的间隔:70ms</br><a href=\"https://www.iotman.club/\"><h2>进入官网</h2></a></br>";
             lasttimems=nowtimems;
         }
         //发送消息  
@@ -140,7 +140,7 @@
         -->
         <div class="row clearfix">
               <!--温度监控 开始-->
-                    <div class="col-xs-12 col-sm-10 col-md-9 col-lg-6">
+                    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
                         <p><h4>在线设备温度</h4></p>
                         <div id="t" style="height:300px"></div>
                         <script type="text/javascript">
@@ -282,7 +282,7 @@
                     </div>
                     <!--温度监控 结束-->
                     <!--湿度监控 开始-->
-                    <div class="col-xs-12 col-sm-10 col-md-9 col-lg-6">
+                    <div class="col-xs-12 col-sm-10 col-md-6 col-lg-6">
                         <p><h4>在线设备湿度</h4></p>
                         <div id="h" style="height:300px"></div>
                         <script type="text/javascript">
